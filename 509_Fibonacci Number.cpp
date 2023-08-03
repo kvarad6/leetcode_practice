@@ -1,4 +1,5 @@
 class Solution {
+    
     //Top Down Approach (Recursion + Memoisation)
     int fibCalculate(int n, vector<int> &dp){
         if(n<=1){
@@ -11,7 +12,7 @@ class Solution {
         //recursion
         dp[n] = fibCalculate(n-1, dp) + fibCalculate(n-2, dp);
         return dp[n];
-    }
+    
 public:
     int fib(int n) {
         int answer;
@@ -22,8 +23,8 @@ public:
         answer = fibCalculate(n, dp);
         return answer;
     }
+
     //Bottom Up Approach (Tabulation)
-    public:
         int fib(int n){
             vector<int> dp(n+1, -1);
             if(n<=1){
@@ -36,5 +37,23 @@ public:
             }
             return dp[n];
         }
+    
+    //Space optimization
+    int fib(int n){
+        int prev1 = 1;
+        int prev2 = 0;
+        int curr;
+        if(n<=1){
+            return n;
+        }
+
+        for(int i=2;i<=n;i++){
+            //shifting logic
+            curr = prev1 + prev2;
+            prev2 = prev1;
+            prev1 = curr;
+        }
+        return curr;
+    }
 
 };
