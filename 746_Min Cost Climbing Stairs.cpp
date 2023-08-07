@@ -62,25 +62,18 @@ public:
         }
 
     //Space Optimization 
-    public:
+      public:
        int minCostClimbingStairs(vector<int>& cost) {
-            int n = cost.size();
-            //base cases
-            if(n==0){
-                return cost[0];
-            }
-            if(n==1){
-                return cost[1];
-            }
-            int prev  = cost[0];
-            int curr = cost[1];
+            int n = cost.size();           
+            int prev1  = cost[1];
+            int prev2 = cost[0];
             for(int i=2;i<n;i++){
-                int temp = curr;
-                curr = cost[i] + min(prev, curr);
-                prev = temp;
+                int curr = cost[i]+min(prev1, prev2);
+                prev2 = prev1;
+                prev1 = curr;
             }
 
-            return min(prev, curr);
+            return min(prev1, prev2);
         } 
 
 
