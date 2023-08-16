@@ -6,6 +6,7 @@ int solve(vector<int> &nums, int n){
     if(n<0){
         return 0;
     }
+    //if only one element is present, so return element present at oth index
     if(n==0){
         return nums[0];
     }
