@@ -1,5 +1,5 @@
 class Solution {
-    //Recursive solution | TLE
+    //Recursive solution 1 | TLE
     int solve(vector<int>& cost, int n){
         //base cases
         if(n==0){
@@ -19,6 +19,24 @@ public:
         int ans = min(solve(cost, n-1), solve(cost, n-2));
         return ans;
 
+    }
+
+    //Recursive solution 2 | TLE
+
+     int solve(int n, vector<int>& cost){
+        //base cases
+        if(n==0 || n==1){
+            return 0;
+        }
+        //recursive relation
+        int ans = min(solve(n-1, cost) + cost[n-1], solve(n-2, cost) + cost[n-2]);
+        return ans;
+    }
+public:
+    int minCostClimbingStairs(vector<int>& cost) {
+        int n = cost.size();
+        int ans = solve(n, cost);
+        return ans;
     }
 
     //Using DP | Recursion + Memoisation 
