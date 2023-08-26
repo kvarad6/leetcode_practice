@@ -30,6 +30,7 @@ public:
         int currentProduct;
 
         for(int i=0;i<n;i++){
+            //when current element is 0, start a new subarray product
             if(prefix==0){
                 prefix = 1;
             }
