@@ -73,7 +73,7 @@ int cutSegments(int n, int x, int y, int z) {
 }
 
 // Using DP | Bottom Up Appraoch | Tabulation
-
+// TC: O(N) | SC: O(N)
 int solve(int n, int x, int y, int z, vector<int> &dp){
 	//base cases
 	dp[0] = 0;
