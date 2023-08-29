@@ -1,6 +1,7 @@
 //Using Recursion
 int solve(int *weights, int *values, int index, int capacity){
 	//base case
+	//if only one element/ weight is there (means index==0)
 	if(index==0){
 		//if there is capacity/ empty space in the bag to hold items
 		//if only one item to steal, then just comapers its weight with the knapsack capacity
