@@ -2,9 +2,12 @@
 int solve(int *weights, int *values, int index, int capacity){
 	//base case
 	if(index==0){
+		//if there is capacity/ empty space in the bag to hold items
+		//if only one item to steal, then just comapers its weight with the knapsack capacity
 		if(weights[0]<=capacity){
 			return values[0];
 		}
+		//if bag is full/ capacity is reached
 		else{
 			return 0;
 		}
