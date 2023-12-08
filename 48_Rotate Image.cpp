@@ -11,7 +11,7 @@ public:
             }
         }
 
-        //Reverse every row
+        //Reverse every row | swapping columns
         for(int i=0;i<length;i++){
             reverse(matrix[i].begin(), matrix[i].end());
         }
