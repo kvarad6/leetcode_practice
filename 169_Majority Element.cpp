@@ -16,6 +16,8 @@ public:
         //---------------- Approach 2 ----------------------//
 
         //Using Hashmap | unordered_map
+        //TC: O(NlogN)
+        //SC: O(1)
 
         unordered_map<int, int> mpp;
 
