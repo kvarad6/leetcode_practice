@@ -11,47 +11,54 @@
 class Solution {
 public:
     ListNode* removeNthFromEnd(ListNode* head, int n) {
+
+        //-------------- Approach 1 ---------------------//
+        // Total nodes -> Transverse till nth node, connect nth prev with nth next..
+        // imp: need to remove node from last, not from the first..
+        // Two pass solution
+
+        ListNode* temp = head;
+        int totalNodes = 0;
+
+        while(temp!=NULL){
+            totalNodes++;
+            temp = temp->next;
+        }
+
+        if(totalNodes == n){
+            return head->next;
+        }
+
+        ListNode* prevNode = head;
+
+        for(int i=0;i<totalNodes-n-1;i++){
+            prevNode = prevNode->next;
+        }
+        prevNode->next = prevNode->next->next;
+
+        return head;
+
+        //--------------- Approach 2 ------------------//
+
+        // Using Fast-Slow pointers..
+        // One pass solution..
         
-        //Using two pointers (fast and slow: one pass solution..)
-        ListNode* start = new ListNode();
-        start->next = head;
-        ListNode* fast = start;
-        ListNode* slow = start;
-        
-        for(int i=1;i<=n;i++){
+        ListNode* fast = head;
+        ListNode* slow = head;
+
+        for(int i=0;i<n;i++){
             fast = fast->next;
         }
-        
+
+        if(fast==NULL){
+            return head->next;
+        }
+
         while(fast->next!=NULL){
             fast = fast->next;
             slow = slow->next;
         }
         slow->next = slow->next->next;
-        return start->next;
-        
-        /*
-        //Using 2 pass solution..
-        ListNode* temp = head;
-        int total_node = 0;
-        
-        while(temp!=NULL){
-            temp = temp->next;
-            total_node++;
-        }
-        
-        if(total_node == n){
-            return head->next;
-        }
-        
-        ListNode* prev_node = head;
-        
-        for(int i=0;i<total_node-n-1;i++){
-            prev_node = prev_node->next;
-        }
-        prev_node->next = prev_node->next->next;
-        
         return head;
-        */
     }
-    
 };
