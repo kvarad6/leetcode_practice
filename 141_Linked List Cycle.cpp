@@ -9,16 +9,56 @@
 class Solution {
 public:
     bool hasCycle(ListNode *head) {
-        ListNode* slow = head;
+
+        //--------- Approach 1 ------------------//
+
+        // Using Fast-Slow pointer | Two pointer | Floyd's Cycle-Finding Algorithm
+
+        if(head==NULL || head->next==NULL){
+            return false;
+        }
+
         ListNode* fast = head;
-        
-        while(fast!=NULL && fast->next!=NULL){
+        ListNode* slow = head;
+
+        while(fast && fast->next){
+            fast = fast->next->next;
             slow = slow->next;
-            fast = (fast->next)->next;
-            if(fast==slow){
+
+            if(fast == slow){
                 return true;
             }
         }
         return false;
+
+        //------------------ Approach 2 ----------------------//
+
+        // Using hashmap..
+
+         //Initially map is empty, so all the nodes are having count as 0.
+        //As we visit nodes, mark them as 1
+        //check if any node is already marked (>0) 
+        //true -> cycle
+        //false-> no cycle
+
+        //Slower than fast-slow alg..
+        
+        if(head==NULL){
+            return false;
+        }
+        unordered_map<ListNode*, int> mpp;
+        ListNode* temp = head;
+
+        while(temp!=NULL){
+            if(mpp.count(temp)>0){
+                return true;
+            }
+            else{
+                mpp[temp]=1;
+            }
+            temp = temp->next;
+        }
+        return false;
+
     }
 };
