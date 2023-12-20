@@ -1,7 +1,8 @@
 class Solution {
 public:
 
-//------ Approach 1 | Using Heapify (Priority Queue) -----------//
+//------ Approach 1 | Using Heapify/ Heap Sort (Priority Queue) -----------//
+//Heap Sort: Array -> Heap -> Sort
 
 //TC: O(N)
 //SC: O(1)
