@@ -36,11 +36,16 @@ public:
     vector<int> sortArray(vector<int>& nums) {
 
         int n = nums.size();
+
+        // heapify stage
+        //It will convert array to heap (max heap) and largest element become at root/ start of the array
         for(int i=n/2-1;i>=0;i--){
             heapify(nums, n, i);
         }
 
         // sorting stage
+        //starting from the largest (first element) and swap with the last one 
+        //and calling heapify function fot the remaining part of the array
         for(int i = nums.size() - 1; i > 0; i--){
             swap(nums[0], nums[i]);
             heapify(nums, i, 0);
