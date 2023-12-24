@@ -15,6 +15,7 @@ public:
         stringstream str(s);
 
         // storing separated words in vector
+        //operator >>- Read something from the stringstream object.
         while (str >> word) 
             vec.push_back(word);
         
