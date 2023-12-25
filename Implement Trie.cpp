@@ -11,6 +11,7 @@ struct Node {
     bool flag = false;
 
     //to check if char is present in trie or not
+    //ch-'a' give the corresponding ascii value
     bool containsKey(char ch){
         return (links[ch - 'a']!=NULL);
     }
