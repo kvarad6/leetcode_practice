@@ -2,23 +2,22 @@ class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         //Using kadane's alg..
-
-        int sum = 0;
-        int maxi = nums[0];
+        
+        int maxSum = INT_MIN;
+        int currentSum = 0;
 
         for(int i=0;i<nums.size();i++){
-            sum += nums[i];
+            currentSum += nums[i];
 
-            //if current sum is greater than maximum sum, then the current sum becomes the maximum sum
-            if(sum>maxi){
-                maxi = sum;
-            }
+        //if current sum is greater than maximum sum, then the current sum becomes the maximum sum
 
-            if(sum<0){
-                sum = 0;
+            if(currentSum > maxSum){
+                maxSum = currentSum;
             }
-            
+            if(currentSum < 0){
+                currentSum = 0;
+            }
         }
-        return maxi;
+        return maxSum;
     }
 };
