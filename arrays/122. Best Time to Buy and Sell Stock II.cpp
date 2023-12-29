@@ -1,17 +1,18 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-        //using normal approach | minPrice, maxProfit, totalProfit
+        //----------- Approach 1 -------------//
+        //using minPrice, maxProfit, totalProfit
+
+        int totalProfit = 0;
         int minPrice = prices[0];
         int maxProfit = 0;
-        int totalProfit = 0;
 
         for(int i=0;i<prices.size();i++){
-            if(minPrice>prices[i]){
+            if(minPrice > prices[i]){
                 minPrice = prices[i];
             }
-
-            if(maxProfit<prices[i]-minPrice){
+            if(maxProfit < prices[i]-minPrice){
                 maxProfit = prices[i]-minPrice;
                 totalProfit += maxProfit;
                 maxProfit = 0;
@@ -20,6 +21,7 @@ public:
         }
         return totalProfit;
 
+        //----------- Approach 2 ------------//
         //using peak-valley concept
         //buy at valley, sell at peak
 
@@ -40,5 +42,13 @@ public:
         }
         return profit;
 
+        //------------ Approach 3 ------------//
+        int profit = 0;
+        for(int i=1;i<prices.size();i++){
+            if(prices[i]>prices[i-1]){
+                profit += prices[i] - prices[i-1];
+            }
+        }
+        return profit;
     }
 };
