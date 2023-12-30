@@ -1,9 +1,69 @@
+//---------------- Approach 1 --------------------//
+//bruite force..
+//transverse entire matrix and check for target
+//TC: O(N*M)
+//SC: O(1)
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        
+
+        int rows = matrix.size();
+        int columns = matrix[0].size();
+
+        for(int i=0;i<rows;i++){
+            for(int j=0;j<columns;j++){
+                if(matrix[i][j]==target){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
+
+
+//---------------- Approach 2 --------------------//
+//using binary search (row-wise) | array + binary search
+//TC: O(NlogM) | for each row, applying binary search for m elements
+//SC: O(1)
+
 class Solution {
 public:
     bool searchMatrix(vector<vector<int>>& matrix, int target) {
 
-        //binary search in 2d matrix..
-    
+        int rows = matrix.size();
+        int columns = matrix[0].size();
+
+        for(int i=0;i<rows;i++){
+            int low = 0;
+            int high = columns-1;
+            while(low<=high){
+                int mid = low + (high-low)/2;
+                if(matrix[i][mid]==target){
+                    return true;
+                }
+                else if(matrix[i][mid]<target){
+                    low = mid + 1;
+                }
+                else{
+                    high = mid - 1;
+                }
+            }
+        }
+        return false;
+    }
+};
+
+//---------------- Approach 3 --------------------//
+// binary search in 2d matrix | matrix + binary search
+//TC: O(log(M*N))
+//SC: O(1)
+
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {    
 
         int rows = matrix.size();
         int columns = matrix[0].size();
@@ -40,3 +100,4 @@ public:
         return false;
      }
 };
+
