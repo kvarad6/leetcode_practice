@@ -43,7 +43,7 @@ public:
 
 
 //---------------- Approach 3 ----------------------//
-//Using Hashmap 
+//Moore Voting Algorithm
 //TC: O(N)
 //SC: O(1)
 
@@ -69,11 +69,3 @@ public:
     }
 };
 
-
-
-        //---------------- Approach 4 --------------------//
-
-        //Moore Voting Algorithm -> pending...
-
-    }
-};
