@@ -10,53 +10,51 @@
  * };
  */
 
-
-/*
- //Recursive approach 
+ //--------------- Approach 1 ------------------//
+ //Recursive Traversal
 
 class Solution {
 public:
-    vector<int> ans;
-    void fill(TreeNode* root){
-        if(!root)
+
+    void fill(TreeNode* root, vector<int> &ans){
+        if(root==NULL){
             return;
-        
-        fill(root->left);
-        ans.push_back(root->val);  // Inorder
-        fill(root->right);
+        }
+        fill(root->left, ans);
+        ans.push_back(root->val);
+        fill(root->right, ans);
     }
+
     vector<int> inorderTraversal(TreeNode* root) {
-        fill(root);
+        vector<int> ans;
+        fill(root, ans);
         return ans;
     }
 };
-*/
 
-//Iterative approach
+//-------------- Approach 2 ---------------//
+//Iterative Traversal
 
 class Solution {
 public:
-    
-    vector<int> inorderTraversal(TreeNode* root) {
-        stack<TreeNode*> st;
-        TreeNode* node = root;
-        vector<int> inorderTraversal;
 
-        while(true){
-            if(node!=NULL){
-                st.push(node);
-                node = node->left;
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> ans;
+        stack<TreeNode*> st;
+        while(root || !st.empty()){
+            if(root!=NULL){
+                st.push(root);
+                root = root->left;
             }
             else{
-                if(st.empty()==true){
-                    break;
-                }
-                node = st.top();
+                root = st.top();
                 st.pop();
-                inorderTraversal.push_back(node->val);
-                node = node->right;
+                ans.push_back(root->val);
+                root = root->right;
             }
         }
-        return inorderTraversal;
-        }
+        return ans;
+    }
 };
+
+//pending: morris alg..
