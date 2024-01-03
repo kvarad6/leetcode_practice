@@ -12,6 +12,8 @@
 
  //--------------- Approach 1 ------------------//
  //Recursive Traversal
+ //TC: O(N)
+ //SC: O(N)
 
 class Solution {
 public:
@@ -34,6 +36,8 @@ public:
 
 //-------------- Approach 2 ---------------//
 //Iterative Traversal
+//TC: O(N)
+//SC: O(N)
 
 class Solution {
 public:
@@ -57,4 +61,7 @@ public:
     }
 };
 
-//pending: morris alg..
+//-------------- Approach 3 -------------//
+//Morris Alg | Threaded Binary Tree
+//TC: O(N)
+//SC: O(1)
