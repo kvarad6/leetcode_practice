@@ -12,6 +12,8 @@
 
  //--------------- Approach 1 ------------------//
  //Recursive Traversal
+ //TC: O(N)
+ //SC: O(N)
 
 class Solution {
 public:
@@ -25,7 +27,7 @@ public:
         fill(root->right, ans);
     }
 
-    vector<int> preorderTraversal(TreeNode* root) {
+    vector<int> inorderTraversal(TreeNode* root) {
         vector<int> ans;
         fill(root, ans);
         return ans;
@@ -34,6 +36,8 @@ public:
 
 //-------------- Approach 2 ---------------//
 //Iterative Traversal
+//TC: O(N)
+ //SC: O(N)
 
 class Solution {
 public:
@@ -57,4 +61,8 @@ public:
     }
 };
 
-//pending: morris alg..
+//-------------- Approach 3 -------------//
+//Morris Alg
+//TC: O(N)
+//SC: O(1)
+
