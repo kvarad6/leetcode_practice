@@ -65,3 +65,37 @@ public:
 //Morris Alg | Threaded Binary Tree
 //TC: O(N)
 //SC: O(1)
+
+class Solution {
+public:
+
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> inorder;
+        TreeNode* curr = root;
+        while(curr!=NULL){
+            if(curr->left==NULL){
+                inorder.push_back(curr->val);
+                curr = curr->right;
+            }
+            else{
+                TreeNode* prev = curr->left;
+                //if left exist, go to the rightmost node of the left subtree
+                while(prev->right && prev->right!=curr){
+                    prev = prev->right;
+                }
+                //if thread/ link between rightmost and current does not exist, create one
+                    if(prev->right==NULL){
+                        prev->right = curr;
+                        curr = curr->left;
+                    }
+                //if the thread already exist, break it and push the curr to the array.
+                    else{
+                        prev->right = NULL;
+                        inorder.push_back(curr->val);
+                        curr = curr->right;
+                    }
+                }
+        }
+        return inorder;
+    }
+};
