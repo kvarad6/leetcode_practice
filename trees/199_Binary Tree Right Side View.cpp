@@ -9,6 +9,11 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//--------------------- Approach 1 ------------------------//
+// Recursive solution
+// Reverse Preorder Traversal | Root->Right->Left
+
 class Solution {
 public:
    void recursive_traversal(TreeNode* root, int level, vector<int> &res){
