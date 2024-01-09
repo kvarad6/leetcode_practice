@@ -18,6 +18,8 @@
 
 ************************************************************/
 
+//TC: O(N)
+//SC: O(N)
 
 #include<map>
 vector<int> bottomView(TreeNode<int> * root){
