@@ -25,10 +25,12 @@ public:
             return 0;
         }
         int leftHeight = findHeight(node->left);
+        //if at any point, this call returns -1, then return -1 as tree is not balanced
         if(leftHeight == -1){
             return -1;
         }
         int rightHeight = findHeight(node->right);
+        //if at any point, this call returns -1, then return -1 as tree is not balanced
         if(rightHeight == -1){
             return -1;
         }
