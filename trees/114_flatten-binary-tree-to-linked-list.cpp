@@ -9,28 +9,28 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-//  //--------------- Approach 1 ----------------//
-//  //Recursive Solution
-//  //rearranging existing nodes | Reverse Post Order
-//  //TC: O(N)
-//  //SC: O(N)
+ //--------------- Approach 1 ----------------//
+ //Recursive Solution
+ //rearranging existing nodes | Reverse Post Order
+ //TC: O(N)
+ //SC: O(N)
 
-// class Solution {
-//     TreeNode* prev = NULL;
-// public:
-//     void flatten(TreeNode* root) {
+class Solution {
+    TreeNode* prev = NULL;
+public:
+    void flatten(TreeNode* root) {
         
-//         TreeNode* node = root;
-//         if(root==NULL){
-//             return;
-//         }
-//         flatten(node->right);
-//         flatten(node->left);
-//         node->right = prev;
-//         node->left = NULL;
-//         prev = node; 
-//     }
-// };
+        TreeNode* node = root;
+        if(root==NULL){
+            return;
+        }
+        flatten(node->right);
+        flatten(node->left);
+        node->right = prev;
+        node->left = NULL;
+        prev = node; 
+    }
+};
 
 //--------------- Approach 2 ----------------//
  //Iterative Solution
@@ -65,3 +65,9 @@ public:
         }
     }
 };
+
+//------------- Approach 3 | PENDING -------------//
+//optimised approach
+//SC: O(1)
+//TC: O(N)
+
