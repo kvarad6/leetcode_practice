@@ -66,8 +66,32 @@ public:
     }
 };
 
-//------------- Approach 3 | PENDING -------------//
-//optimised approach
+//------------- Approach 3 -------------//
+//optimised approach | Morris Traversal
 //SC: O(1)
 //TC: O(N)
+
+class Solution {
+public:
+    void flatten(TreeNode* root) {
+        if(root==NULL){
+            return;
+        }
+        TreeNode* currentNode = root;
+        TreeNode* prevNode = NULL;
+        while(currentNode!=NULL){
+            if(currentNode->left!=NULL){
+                prevNode = currentNode->left;
+                while(prevNode->right!=NULL){
+                    prevNode = prevNode->right;
+                }
+                prevNode->right = currentNode->right;
+                currentNode->right = currentNode->left;
+                currentNode->left = NULL;
+            }
+            currentNode = currentNode->right;
+        }
+    }
+};
+
 
