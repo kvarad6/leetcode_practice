@@ -1,4 +1,4 @@
-/**
+ /**
  * Definition for a binary tree node.
  * struct TreeNode {
  *     int val;
@@ -14,6 +14,8 @@ public:
     bool isValidBST(TreeNode* root) {
         return help(root, LONG_MIN, LONG_MAX);
     }
+
+    //Here, we have used long intstead of int as the constraint given is from -2^31 to 2^31-1, and INT_MAX = 2^31-1 and INT_MIN = -2^31.
 
     bool help(TreeNode* root, long min, long max){
         // root==NULL is same as !root
