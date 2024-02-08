@@ -1,5 +1,7 @@
 class Solution {
 public:
+//------------- Appraoch 1 --------------------//
+
 //Simple recursive sol | Time limit exceeded
     int climbStairs(int n) {
         if(n<0) return 0;
@@ -7,7 +9,10 @@ public:
         return climbStairs(n-1)+climbStairs(n-2);
     }
 
-    //Using DP | Top Down Approach (Recursion + Memoisation)
+//---------------- Approach 2 ---------------------//
+// TC: O(N)
+// SC: O(N) recursion stack space + O(N) for dp array
+//Using DP | Top Down Approach (Recursion + Memoisation)
 
     int helper(vector<int> &dp, int n){
         //base cond.
@@ -30,7 +35,11 @@ public:
         return helper(dp, n);
     }
 
-    //Using DP | Bottom Up Approach (Tabulation)
+
+//----------------- Approach 3 ---------------------//
+// TC: O(N)
+// SC: O(N)
+//Using DP | Bottom Up Approach (Tabulation)
 
     int climbStairs(int n){
         //Creating dp table of size n+1
@@ -53,7 +62,11 @@ public:
         return dp[n];
     }
 
-    //Space Optimization
+
+//-------------------- Approach 4 -------------------//
+// TC: O(N)
+// SC: O(1)
+//Space Optimization
 
     int climbStairs(int n){
         if(n==0 || n ==1){
@@ -72,5 +85,25 @@ public:
         }
         return curr;
     }
+
+    //Another solution for space optimization method:
+
+    int climbStairs(int n) {
+            if(n<0){
+                return 0;
+            }
+            if(n==0 || n ==1){
+                return 1;
+            }
+            int prev = 1;
+            int prev2 = 1;
+    
+            for(int i=2;i<=n;i++){
+                int current = prev + prev2;
+                prev2 = prev;
+                prev = current;
+            }
+        return prev;
+        }
  
 };
