@@ -49,7 +49,7 @@ public:
         for(int i=0;i<n;i++){
             fast = fast->next;
         }
-
+        //handle the case when n = total nodes (head need to be removed)
         if(fast==NULL){
             return head->next;
         }
