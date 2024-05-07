@@ -54,3 +54,27 @@ public:
         return ans;
     }
 };
+
+
+//-------------- Approach 3 -------------------//
+//without using extra space
+//using index -> each element represent a position in array | 1<=nums[i]<=n
+//while traversing the array, if you come back to the same position -> duplicate
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        vector<int> ans;
+        for(int i=0;i<nums.size();i++){
+            //index to check -> abs(nums[i]-1) 
+            //if positive -> mark it as visited by making it negative
+            //if negative -> already visited -> abs(nums[i]) -> duplicate
+            if(nums[abs(nums[i])-1]>0){
+                nums[abs(nums[i])-1] *= -1;
+            }
+            else{
+                ans.push_back(abs(nums[i]));
+            }
+        }
+        return ans;
+    }
+};
