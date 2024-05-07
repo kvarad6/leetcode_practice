@@ -32,7 +32,7 @@ public:
 
 
 //--------------- Approach 2 -------------------//
-// using set and array
+// using set and array | set -> unique + sorted
 // Time Complexity : O(n)
 // Space Complexity : O(n)
 class Solution {
