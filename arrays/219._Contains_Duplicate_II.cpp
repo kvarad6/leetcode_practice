@@ -24,6 +24,9 @@ public:
 //using hashmap
 //TC: O(N)
 //SC: O(N)
+
+//update: if (i - map[nums[i]] <= k) | abs not needed
+//reason: any index stored in the unordered map will exclusively be less than or equal to i
 class Solution {
 public:
     bool containsNearbyDuplicate(vector<int>& nums, int k) {
@@ -32,7 +35,8 @@ public:
             //to check if element found before
             if(mpp.count(nums[i])!=NULL){
                 //check for condition
-                if(abs(i-mpp[nums[i]])<=k){
+                // if(abs(i-mpp[nums[i]])<=k){
+                if (i - mpp[nums[i]] <= k){
                     return true;
                 }
             }
