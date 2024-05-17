@@ -50,6 +50,37 @@ public:
 
 //---------- Approach 3 ----------//
 //sliding window
+//to find value in a certain range of indices in the nums array -> sliding window
+//when the size of the window increases than the given size then remove element at the front of the window
+//two steps:
+//if abs(i-j)>k -> shrink the window from ith end
+//before shrinking, remove the element from set
+
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+       unordered_set<int> st;
+       int i=0;
+       int j=0;
+
+       while(j<nums.size()){
+        //check for condition
+        if(abs(i-j)>k){
+            st.erase(nums[i]);
+            i++;
+        }
+
+        //if element found in past, within window size
+        if(st.find(nums[j])!=st.end()){
+            return true;
+        }
+        //otherwise add that element in set and increase window size
+        st.insert(nums[j]);
+        j++;
+       }
+       return false;
+    }
+};
 
 
 
