@@ -5,13 +5,16 @@ class Solution {
 public:
     int maxArea(vector<int>& height) {
         int currentArea=0, maxArea=0; 
+        int currentWidth=0, currentHeight=0;
         for(int i=0;i<height.size();i++){
             for(int j=i+1; j<height.size();j++){
-                currentArea = min(height[i], height[j]) * (j-i);
+                currentWidth = j-i;
+                currentHeight = min(height[i], height[j]);
+                currentArea = currentHeight * currentWidth;
                 maxArea = max(maxArea, currentArea);
             }
         }
-        return maxArea;
+    return maxArea;
     }
 };
 
@@ -28,9 +31,12 @@ public:
         int i=0;
         int j=height.size()-1;
         int currentArea=0, maxArea=0;
+        int currentWidth=0, currentHeight=0;
 
         while(i<=j){
-            currentArea = min(height[i], height[j]) * (j-i);
+            currentWidth = j-i;
+            currentHeight = min(height[i], height[j]);
+            currentArea = currentHeight * currentWidth;
             maxArea = max(maxArea, currentArea);
             if(height[i]<height[j]){
                 i++;
@@ -42,4 +48,3 @@ public:
         return maxArea;
     }
 };
-
