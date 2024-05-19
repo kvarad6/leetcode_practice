@@ -5,6 +5,10 @@
 
 //second step -> to identify starting point, just check if [gas at that station - cost] required at that station,
 //if its positive, can start from that station, otherwise go to next station
+
+//TC: O(N)
+//SC:O(1)
+
 class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
