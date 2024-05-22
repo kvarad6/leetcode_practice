@@ -50,7 +50,8 @@ public:
 };
 
 //---------- Approach 3 ----------//
-//sliding window
+//sliding window | using unordered_set
+
 //to find value in a certain range of indices in the nums array -> sliding window
 //when the size of the window increases than the given size then remove element at the front of the window
 //two steps:
@@ -65,7 +66,7 @@ public:
        int j=0;
 
        while(j<nums.size()){
-        //check for condition
+        //check for condition | window size exceeded | shrink from ith side
         if(abs(i-j)>k){
             st.erase(nums[i]);
             i++;
@@ -80,6 +81,32 @@ public:
         j++;
        }
        return false;
+    }
+};
+
+
+
+//---------- Approach 4 ----------//
+//sliding window | using unordered_map
+class Solution {
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
+        unordered_map<int, int> mpp;
+        int i=0, j=0;
+        for(;j<nums.size();j++){
+            //if exceeded the window size, remove element from map
+            if(j>k){
+                mpp[nums[i]]--;
+                i++;
+            }
+            //similar element found
+            if(mpp[nums[j]]>0){
+                return true;
+            }
+
+            mpp[nums[j]]++;
+        }
+        return false;
     }
 };
 
