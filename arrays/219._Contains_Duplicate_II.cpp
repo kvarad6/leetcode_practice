@@ -33,6 +33,7 @@ public:
         unordered_map<int, int> mpp;
         for(int i=0;i<nums.size();i++){
             //to check if element found before
+            //mpp.find(nums[i])!=mpp.end() can also be used
             if(mpp.count(nums[i])!=NULL){
                 //check for condition
                 // if(abs(i-mpp[nums[i]])<=k){
