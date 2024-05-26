@@ -6,7 +6,8 @@ class Solution:
         n = len(nums)
 
         ans=[]
-
+        
+        #range(1, n+1) -> creates a sequence of numbers starting from 1 (inclusive) and ending at n (exclusive)
         for i in range(1, n + 1):
             if i<len(nums) and nums[i] == nums[i-1] + 1:
                 continue
