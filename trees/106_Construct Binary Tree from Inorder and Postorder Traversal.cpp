@@ -11,6 +11,8 @@
  */
 
 /*
+
+//----------- Approach 1 ------------//
 Steps followed and imp points:
 
 
@@ -76,5 +78,38 @@ public:
 
         return root;
 
+    }
+};
+
+
+//--------------- Approach 2 ---------------//
+
+class Solution {
+public:
+
+    TreeNode* construct(vector<int>& postorder, int postStart, int postEnd, vector<int>& inorder, int inStart, int inEnd, unordered_map<int, int>& mpp){
+        if(postStart<postEnd || inStart>inEnd){
+            return NULL;
+        }
+
+        TreeNode* root = new TreeNode(postorder[postStart]);
+
+        int inRoot = mpp[root->val];
+        int numsLeft = inEnd - inRoot;
+
+        root->left = construct(postorder, postStart-numsLeft-1, postEnd, inorder, inStart, inRoot-1, mpp);
+        root->right = construct(postorder, postStart-1, postStart-numsLeft, inorder, inRoot+1, inEnd, mpp);
+
+        return root;
+    }
+
+    TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        unordered_map<int, int> mpp;
+        for(int i=0;i<inorder.size();i++){
+            mpp[inorder[i]] = i;
+        }
+
+        TreeNode* root = construct(postorder, postorder.size()-1, 0, inorder, 0, inorder.size()-1, mpp);
+        return root;
     }
 };
