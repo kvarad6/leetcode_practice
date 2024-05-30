@@ -12,6 +12,7 @@
  //--------------- Approach 1 ----------------//
  //Recursive Solution
  //rearranging existing nodes | Reverse Post Order
+ //breaking left links and joining them to right
  //TC: O(N)
  //SC: O(N)
 
