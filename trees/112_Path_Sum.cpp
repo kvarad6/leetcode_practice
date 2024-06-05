@@ -64,6 +64,44 @@ public:
     }
 };
 
+
+//-------- Approach 3 ---------//
+//Iterative solution
+//using stack
+
+class Solution {
+public:
+    bool hasPathSum(TreeNode* root, int targetSum){
+        if(root==NULL){
+            return false;
+        }
+        stack<pair<TreeNode*, int>> st;
+        st.push({root, 0});
+        while(!st.empty()){
+            auto node = st.top();
+            TreeNode* currentNode = node.first;
+            int currentSum = node.second;
+            st.pop();
+            if(currentNode->left==NULL && currentNode->right==NULL){
+                currentSum += currentNode->val;
+                if(currentSum==targetSum){
+                    return true;
+                }
+            }
+
+            if(currentNode->left!=NULL){
+                st.push({currentNode->left, currentSum+currentNode->val});
+            }
+            if(currentNode->right!=NULL){
+                st.push({currentNode->right, currentSum+currentNode->val});
+            } 
+        }
+        return false;
+    }
+};
+
+
+
 //-------- Approach 3 ---------//
 //Iterative solution
 //pending
