@@ -134,3 +134,46 @@ public:
         return totalNodes;
     }
 };
+
+
+//------- Approach 5 --------//
+// Efficient solution | TC less than O(N)
+//leftHeight, rightHeight, recursion
+//in case of complete binary tree, if lh==rh, total nodes = 2^height - 1
+//TC: O(logn * logn)
+class Solution {
+public:
+    double leftHeight = 0;
+    double rightHeight = 0;
+    void countLeft(TreeNode* node){
+        if(node==NULL){
+            return;
+        }
+        leftHeight++;
+        countLeft(node->left);
+    }
+
+    void countRight(TreeNode* node){
+        if(node==NULL){
+            return;
+        }
+        rightHeight++;
+        countRight(node->right);
+    }
+
+    int countNodes(TreeNode* root) {
+        if(root==NULL){
+            return 0;
+        }
+        double totalNodes = 0;
+        countLeft(root->left);
+        countRight(root->right);
+
+        if(leftHeight == rightHeight){
+            totalNodes = pow(2, leftHeight) - 1;
+        }
+
+        totalNodes = 1 + countNodes(root->left) + countNodes(root->right);
+        return totalNodes;
+    }
+};
