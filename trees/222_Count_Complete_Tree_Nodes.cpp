@@ -91,6 +91,46 @@ public:
     }
 };
 
+
 //------- Approach 4 --------//
 // Efficient solution | TC less than O(N)
-//pending | leftHeight, rightHeight, recursion
+//leftHeight, rightHeight, recursion
+//in case of complete binary tree, if lh==rh, total nodes = 2^height - 1
+//TC: O(logn * logn)
+
+class Solution {
+public:
+    int countLeft(TreeNode* node){
+        int leftNodes = 0;
+        while(node!=NULL){
+            leftNodes++;
+            node = node->left;
+        }
+        return leftNodes;
+    }
+
+    int countRight(TreeNode* node){
+        int rightNodes = 0;
+        while(node!=NULL){
+            rightNodes++;
+            node = node->right;
+        }
+        return rightNodes;
+    }
+
+    int countNodes(TreeNode* root) {
+        if(root==NULL){
+            return 0;
+        }
+        int totalNodes = 0;
+        int leftHeight = countLeft(root->left);
+        int rightHeight = countRight(root->right);
+
+        if(leftHeight == rightHeight){
+            totalNodes = pow(2, leftHeight) - 1;
+        }
+
+        totalNodes = 1 + countNodes(root->left) + countNodes(root->right);
+        return totalNodes;
+    }
+};
