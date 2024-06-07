@@ -42,6 +42,7 @@ public:
 //--------- Approach 2 ----------//
 // Using DFS | Recursion
 // TC: O(N)
+// SC: O(height of tree), as it is complete binary tree, height-> log(N)
 class Solution {
 public:
     void countHelper(TreeNode* root, int &countNodes){
@@ -66,6 +67,7 @@ public:
 //--------- Approach 3 ----------//
 // Using DFS | Recursion
 // TC: O(N)
+// SC: O(height of tree), as it is complete binary tree, height-> log(N)
 class Solution {
 public:
     int totalNodes = 0;
