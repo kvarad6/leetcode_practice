@@ -67,3 +67,42 @@ public:
         return calculateSum(root, sum);
     }
 };
+
+
+
+//----------- Approach 3 -----------//
+//Using BFS | Iterative Approach | Queue
+class Solution {
+public:
+    int sumNumbers(TreeNode* root) {
+        queue<pair<TreeNode*, int>> q;
+
+        long currentSum = 0;
+        long totalSum = 0;
+        q.push({root, currentSum});
+
+        while(!q.empty()){
+            // auto [node, currentSum] = q.front();
+            pair<TreeNode*, int> temp = q.front();
+            TreeNode* node = temp.first;
+            int currentSum = temp.second;
+            q.pop();
+            
+            currentSum = currentSum*10 + node->val;
+
+            if(node->left==NULL && node->right==NULL){
+                totalSum += currentSum;
+            }
+
+            
+            if(node->left!=NULL){
+                q.push({node->left, currentSum});
+            }
+            if(node->right!=NULL){
+                q.push({node->right, currentSum});
+            }
+            
+        }
+        return totalSum;
+    }
+};
