@@ -38,3 +38,32 @@ public:
         return totalSum;
     }
 };
+
+
+//---------- Approach 2 ------------//
+//DFS | Recursion
+
+class Solution {
+public:
+    
+    int calculateSum(TreeNode* root, int sum){
+        if(root==NULL){
+            return NULL;
+        }
+
+        sum = sum*10 + root->val;
+
+        if(root->left==NULL && root->right==NULL){
+            return sum;
+        }
+
+        int leftSum = calculateSum(root->left, sum);
+        int rightSum = calculateSum(root->right, sum);
+        return leftSum + rightSum;
+    }
+
+    int sumNumbers(TreeNode* root) {
+        int sum = 0;
+        return calculateSum(root, sum);
+    }
+};
