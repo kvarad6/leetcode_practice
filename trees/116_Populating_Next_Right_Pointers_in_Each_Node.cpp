@@ -84,7 +84,27 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
-        
+        if(root==NULL){
+            return NULL;
+        }
+        queue<Node*> q;
+        q.push(root);
+        while(!q.empty()){
+            Node* node = q.front();
+            q.pop();
+
+            if(node->left!=NULL){
+                q.push(node->left);
+                node->left->next = node->right;
+            }
+            if(node->right!=NULL){
+                if(node->next!=NULL){
+                    node->right->next = node->next->left;
+                }
+                q.push(node->right);
+            }
+        }
+        return root;
     }
 };
 
