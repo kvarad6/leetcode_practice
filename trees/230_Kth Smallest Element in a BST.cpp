@@ -32,5 +32,33 @@ public:
     }
 };
 
-//--------- Approach 2 | optimised --------------//
-// Morris Traversal
+
+
+//--------- Approach 2 -----------//
+//without using extra space
+//TC: O(n)
+//SC: O(1) + stack space
+
+class Solution {
+public:
+    void helper(TreeNode* root, int &count, int k, int &ans){
+        //edge case
+        if(root==NULL){
+            return;
+        }
+        helper(root->left, count, k, ans);
+        count++;
+        if(count == k){
+            ans = root->val;
+            return;
+        }
+        helper(root->right, count, k, ans);
+    }
+
+    int kthSmallest(TreeNode* root, int k) {
+        int count = 0;
+        int ans = 0;
+        helper(root, count, k, ans);
+        return ans;
+    }
+};
