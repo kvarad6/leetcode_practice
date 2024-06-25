@@ -9,6 +9,11 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+
+//can be solved by considering range for each node
+//the nodes present in left subtree are in range --> longmin to root
+//the nodes present in right subtree are in range --> root to longmax
+
 class Solution {
 public:
     bool isValidBST(TreeNode* root) {
