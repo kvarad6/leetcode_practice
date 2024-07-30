@@ -21,6 +21,8 @@ public:
             return NULL;
         }
         //Find the middle element of the array and create a new node with its value.
+        //Can also be written as: 
+        //int middle = left + (right-left)/2;      //As at first, when finding the middle of array, left is 0, right is the last index
         int middle = (left+right)/2;
         TreeNode* root = new TreeNode(nums[middle]);
 
