@@ -79,6 +79,7 @@ public:
         rightHeight = height(root->right)
         diameter = leftHeight + rightHeight + 1
 */
+//TC: O(N^2) | Not eficient
 
 class Solution {
 public:
