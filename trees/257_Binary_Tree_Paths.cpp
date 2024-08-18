@@ -9,6 +9,8 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
+//-------------- Approach 1 -------------//
+
 class Solution {
 public:
     void helper(TreeNode* root, vector<string>& paths, string currentStr){
@@ -29,6 +31,34 @@ public:
         string currentStr = "";
         vector<string> paths;
         helper(root, paths, currentStr);
+        return paths;
+    }
+};
+
+
+//-------------- Approach 2 ----------------//
+
+class Solution {
+public:
+    void findPaths(TreeNode* root, vector<string> &paths, string path){
+        if(root==NULL){
+            return;
+        }
+
+        if(root->left==NULL && root->right==NULL){
+            path += to_string(root->val);
+            paths.push_back(path);
+        }else{
+            path += to_string(root->val) + "->";
+            findPaths(root->left, paths, path);
+            findPaths(root->right, paths, path);
+        }
+    }
+    
+    vector<string> binaryTreePaths(TreeNode* root) {
+        vector<string> paths;
+        string path = "";
+        findPaths(root, paths, path);
         return paths;
     }
 };
