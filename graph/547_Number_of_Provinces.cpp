@@ -11,6 +11,14 @@ public:
                 dfs(neighbor, adjList, visited);
             }
         }
+        //above for loop can also be written as:
+        /*
+        for(auto adjElement: adj[node]){
+            if(!visited[adjElement]){
+                dfs(adjElement, visited, adj);
+            }
+        }
+        */
     }
 
     int findCircleNum(vector<vector<int>>& isConnected) {
