@@ -27,6 +27,8 @@ public:
 
         //convert given adj matrix to list
         // vector<int> adjList[v];
+        
+        //this is the initialisation we use when the no. of nodes are dynamic:
         vector<vector<int>> adjList(v);
         for(int i=0;i<v;i++){
             for(int j=0;j<v;j++){
