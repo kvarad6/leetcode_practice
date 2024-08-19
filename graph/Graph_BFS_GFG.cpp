@@ -20,10 +20,10 @@ class Solution {
             q.pop();
             bfs.push_back(node);
             //to check corresponding neighbours in the adj list, and if not visited, mark them as visited and add them in queue
-            for(auto it: adj[node]){
-                if(visited[it]==0){
-                    visited[it]=1;
-                    q.push(it);
+            for(auto adjElement: adj[node]){
+                if(visited[adjElement]==0){
+                    visited[adjElement]=1;
+                    q.push(adjElement);
                 }
             }
         }
