@@ -57,6 +57,8 @@ public:
         int rightHeight = height(root->right, diameter);
 
         diameter = max(diameter, leftHeight+rightHeight);
+
+        //returning the height as we are dealing with diameter and height in the same function
         return 1+max(leftHeight, rightHeight);
     }
 };
