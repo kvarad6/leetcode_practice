@@ -14,8 +14,8 @@ class Solution {
         //for source node, self distance is '0'
         distanceArray[src] = 0;
         
-        //initialising the visited array
-        vector<int> visited(N, 0);
+        //initialising the visited array | visited array not required**
+        // vector<int> visited(N, 0);
         
         queue<int> q;
         q.push(src);
