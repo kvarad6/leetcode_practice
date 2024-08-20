@@ -19,7 +19,8 @@ class Solution {
                 if(visited[adjElement]==0){
                     visited[adjElement]=1;
                     q.push({adjElement, node});
-                //else, if adj node is already visited, but it's not the parent, then we can say that cycle present in the graph
+                //else, if adj node is already visited, but it's not the parent, then we can say that cycle present in the graph,
+                //as, in the bfs, we always traval equally in both paths, if the adj node is already visited, that means, it's marked as visited by other path, which is connected. 
                 }else if(parent!=adjElement){
                     return true;
                 }
