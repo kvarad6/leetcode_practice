@@ -15,6 +15,7 @@ class Solution {
     
      vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
        //create adj list using the edges array given
+       //each index represent a node (u) pointing to the pair of integers (v, weight)
        vector<pair<int, int>> adj[N];
        
        for(int i=0;i<M;i++){
