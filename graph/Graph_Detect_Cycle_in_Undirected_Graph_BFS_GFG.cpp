@@ -15,9 +15,11 @@ class Solution {
             
             //transverse the adj list, and if the neighbour is not visited, add it in queue
             for(auto adjElement : adj[node]){
+                //if the adj node is not already visited, just mark it as visited
                 if(visited[adjElement]==0){
                     visited[adjElement]=1;
                     q.push({adjElement, node});
+                //else, if adj node is already visited, but it's not the parent, then we can say that cycle present in the graph
                 }else if(parent!=adjElement){
                     return true;
                 }
