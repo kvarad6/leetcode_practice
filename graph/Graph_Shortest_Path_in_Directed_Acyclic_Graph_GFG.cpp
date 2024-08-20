@@ -43,11 +43,13 @@ class Solution {
            int node = st.top();
            st.pop();
            //check curresponding adj elements and the weight in the adj list
+           //ensure that only nodes with known distances (i.e., nodes that have been reached during the algorithm's execution) are processed.
            if(distanceArray[node] != 1e9){
            for(auto it: adj[node]){
                int v = it.first;
                int wt = it.second;
                //check if current distance of v from node is lesser thn existing distance mentioned in the distance array
+               //it's the relaxation state
                if(distanceArray[node]+wt < distanceArray[v]){
                    distanceArray[v] = distanceArray[node]+wt;
                }
