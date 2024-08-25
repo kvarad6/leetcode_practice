@@ -17,6 +17,7 @@ public:
     }
     int rob(vector<int>& nums) {
         int n = nums.size();
+        //as index is starting from 0, passing the last index (n-1)
         int ans = solve(nums, n-1);
         return ans;
     }
