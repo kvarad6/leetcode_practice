@@ -68,4 +68,39 @@ public:
     }
 };
 
+//----------- Approach 3 -------------//
+//BFS | Interative Traversal | Two Stacks
+
+class Solution {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> postorder;
+        if(root==NULL){
+            return postorder;
+        }
+        stack<TreeNode*> traversal;
+        stack<TreeNode*> output;
+
+        traversal.push(root);
+        while(!traversal.empty()){
+            TreeNode* node = traversal.top();
+            traversal.pop();
+            output.push(node);
+            if(node->left!=NULL){
+                traversal.push(node->left);
+            }
+            if(node->right!=NULL){
+                traversal.push(node->right);
+            }
+        }
+
+        while(!output.empty()){
+            TreeNode* node = output.top();
+            output.pop();
+            postorder.push_back(node->val);
+        }
+        return postorder;
+    }
+};
+
 
