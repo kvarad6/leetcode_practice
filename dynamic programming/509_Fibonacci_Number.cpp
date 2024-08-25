@@ -90,19 +90,20 @@ public:
 class Solution {
 public:
     int fib(int n){
-        int prev1 = 1;
+        int prev = 1;
         int prev2 = 0;
-        int curr;
+        int current;
         if(n<=1){
             return n;
         }
 
         for(int i=2;i<=n;i++){
             //shifting logic
-            curr = prev1 + prev2;
-            prev2 = prev1;
-            prev1 = curr;
+            current = prev + prev2;
+            prev2 = prev;
+            prev = current;
         }
-        return curr;
+        //always return the prev, not current as after the last iteration, current holds the value for n+1th Fibonacci number, not the nth.
+        return prev;
     }
 };
