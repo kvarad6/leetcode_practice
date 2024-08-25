@@ -66,7 +66,6 @@ public:
 class Solution {
 public:
     int fib(int n) {
-        int answer;
         vector<int> dp(n+1, -1);
         //base cases
 
