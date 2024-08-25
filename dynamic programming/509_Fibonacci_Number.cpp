@@ -48,6 +48,7 @@ public:
         for(int i=0;i<=n;i++){
             dp[i] = -1;
         }
+        //above step can also be written as : vector<int> dp(n+1, -1);
         answer = fibCalculate(n, dp);
         return answer;
     }
