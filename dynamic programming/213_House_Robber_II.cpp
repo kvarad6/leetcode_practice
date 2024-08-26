@@ -65,7 +65,43 @@ public:
 
 //---------- Recursion | Approach 3 ----------//
 //Without using two arrays
+class Solution {
+public:
+    int helper(int n, vector<int> nums, int start, int end){
+       //base case | to stop the recursion
+       if(start>end){
+        return 0;
+       }
+       //not return nums[0], as we want to return the value of that specific house, not necessarily the first house in the original array.
+       if(start==end){
+        return nums[end];
+       }
+       /*nums[n] not to be add as:
+       a) n is likely intended to be the size of the array, not an index to be used.
+       b) Even if n were changing, using it as an index here wouldn't make sense in the context of this algorithm.
+       */
+       /* Why nums[end]:
+        We're working our way from the end of the array towards the start.
+        end represents the current house we're considering for robbing.
+        By using nums[end], we're adding the value of the current house when we choose to include it.
+        */
+       int include = helper(n, nums, start, end-2) + nums[end];
+       int exclude = helper(n, nums, start, end-1) + 0;
+       int ans = max(include, exclude);
+       return ans;
+    }
 
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        if(n==1){
+            return nums[0];
+        }
+        int case1 = helper(n, nums, 0, n-2);
+        int case2 = helper(n, nums, 1, n-1);
+        int ans = max(case1, case2);
+        return ans;
+    }
+};
 
 
 
