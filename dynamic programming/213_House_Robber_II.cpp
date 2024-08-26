@@ -1,4 +1,5 @@
-//recursion 
+//------ Recursion | Approach 1 --------//
+// Using two arrays 
 class Solution {
     int solve(vector<int>& nums, int n){
         //base cases
@@ -13,22 +14,63 @@ class Solution {
 public:
     int rob(vector<int>& nums) {
         int n = nums.size();
-        vector<int> first, second;
+        vector<int> arr1, arr2;
         if(n==1){
             return nums[0];
         }
+        //fill the nums element (from 1st index to the second last index into both the arrays)
         for(int i=0;i<n;i++){
+            //add the current element in arr1, if it's not the last element
             if(i!=n-1){
-                first.push_back(nums[i]);
+                arr1.push_back(nums[i]);
             }
+            //add current element in the arr2, if it's not the first element
             if(i!=0){
-                second.push_back(nums[i]);
+                arr2.push_back(nums[i]);
             }
         }
-        int ans = max(solve(first, n-2), solve(second, n-2));
+        int ans = max(solve(arr1, n-2), solve(arr2, n-2));
         return ans;
     }
 };
+
+//--------- Recursion | Approach 2 ---------//
+//Using two arrays, but the initialisation step is modifies
+class Solution {
+public:
+    int helper(int n, vector<int> &nums){
+       //base case | to stop the recursion
+       if(n<0){
+        return 0;
+       }
+       int include = helper(n-2, nums) + nums[n];
+       int exclude = helper(n-1, nums) + 0;
+       int ans = max(include, exclude);
+       return ans;
+    }
+
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        if(n==1){
+            return nums[0];
+        }
+        vector<int> arr1(nums.begin(), nums.end() - 1);
+        vector<int> arr2(nums.begin() + 1, nums.end());
+
+        int ans = max(helper(arr1.size()-1, arr1), helper(arr2.size()-1, arr2));
+        return ans;
+    }
+};
+
+
+//---------- Recursion | Approach 3 ----------//
+//Without using two arrays
+
+
+
+
+
+//------------//
 
 // Using DP | Top-Down Approach | Recursion + Memoisation
 
