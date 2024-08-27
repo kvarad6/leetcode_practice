@@ -56,7 +56,7 @@ public:
         }
         vector<int> arr1(nums.begin(), nums.end() - 1);
         vector<int> arr2(nums.begin() + 1, nums.end());
-
+        //passing array.size() - 1 as the starting index for the helper function because arrays in C++ are zero-indexed, and want to start from the last element of the array. 
         int ans = max(helper(arr1.size()-1, arr1), helper(arr2.size()-1, arr2));
         return ans;
     }
