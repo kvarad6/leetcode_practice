@@ -17,6 +17,7 @@ public:
                 for(int j=0;j<current_columns;j++){
                     modified_mat[starting_row][starting_column] = mat[i][j];
                     starting_column += 1;
+                    //if we reached to the end of a row, then make column as 0, and increment row
                     if(starting_column == c){
                         starting_column = 0;
                         starting_row += 1;
