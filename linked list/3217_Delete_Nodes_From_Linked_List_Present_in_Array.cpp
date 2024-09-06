@@ -59,8 +59,54 @@ public:
     }
 };
 
-//--------- Approach 2 | unordered_map<int, bool> ----------//
 
+//--------- Appraoch 2 | unordered_set<int> ----------//
+class Solution {
+public:
+    ListNode* modifiedList(vector<int>& nums, ListNode* head) {
+        //creating a hashmap and inserting array elements into it
+        unordered_set<int> st;
+        for(int i=0;i<nums.size();i++){
+            st.insert(nums[i]);
+        }
 
-//--------- Appraoch 3 | unordered_set<int> ----------//
+        //edge cases
+        if(head==NULL || head->next==NULL){
+            return head;
+        }
+        /*the following test case is not valid:
+            nums = [1]
+            head = [1]
+            As, in the constraints, it's mentioned that:
+            "The input is generated such that there is at least one node in the linked list that has a value not present in nums."
+        */
 
+        //case where we are deleting the current head and upadting the same till we remove all the heads that are the part of the nums array
+        while(st.find(head->val)!=st.end()){
+            ListNode* temp = head;
+            head = head->next;
+            delete(temp);
+        }
+
+        //to keep the track of previous node
+        ListNode* prev = head;
+        ListNode* curr;
+        if (head != NULL) {
+            curr = head->next;
+        } else {
+            curr = NULL;
+        }
+
+        //transverse the linkedlist, check of current node's value present in array, if yes, remove
+        while(curr!=NULL){
+            if(st.find(curr->val)!=st.end()){
+                prev->next = curr->next;
+                curr = curr->next;
+            }else{
+                prev = curr;
+                curr = curr->next;
+            }
+        }
+        return head;
+    }
+};
