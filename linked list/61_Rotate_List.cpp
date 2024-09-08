@@ -29,13 +29,20 @@ public:
             length++;
         }
 
-        ////if k is multiple of length -> list will come bck to original configuration after rotating it.
+        //if k is multiple of length -> list will come bck to original configuration after rotating it.
+        //(or)
+        //if length is equal to the total no. of rotations, then need not to change anything, as ll will come back in its original state
 
-        if(k%length==0){
+        if(k%length==0){ //k==length
             return head;
         }
-        //when k>length
-        k = k%length;
+        
+        
+        //if total rotations is greater than length, we can use %
+        //k%length are the actual rotations that needs to be performed
+        if(k>length){
+            k = k%length;
+        }
 
         //connecting last node with the head
         temp->next = head;
