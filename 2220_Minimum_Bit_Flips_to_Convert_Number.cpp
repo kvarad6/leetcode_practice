@@ -11,6 +11,7 @@ Concept:
     -> Calculate the count of set bits on the go
  Method 2:
     -> Till all the XOR bits becomes '0', Find the AND between XOR and XOR-1
+    -> At each step (N&N-1), a set bit turns off. So, for N becomes 0, in this &, it requires exactly the number of loops equals to the set bits.
     -> update the count (count++)
  Method 3: 
     -> To use C++ STL Built-in function: __builtin_popcount(number)
