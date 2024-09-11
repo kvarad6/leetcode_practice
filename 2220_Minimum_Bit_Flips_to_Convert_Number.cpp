@@ -12,6 +12,8 @@ Concept:
  Method 2:
     -> Till all the XOR bits becomes '0', Find the AND between XOR and XOR-1
     -> update the count (count++)
+ Method 3: 
+    -> To use C++ STL Built-in function: __builtin_popcount(number)
 */
 //----------- Approach 1 -------------//
 class Solution {
@@ -37,6 +39,16 @@ public:
             xorResult = xorResult & (xorResult-1);
             count++;
         }
+        return count;
+    }
+};
+
+//--------- Approach 3 ----------//
+class Solution {
+public:
+    int minBitFlips(int start, int goal) {
+        int xorResult = start ^ goal;
+        int count = __builtin_popcount(xorResult);
         return count;
     }
 };
