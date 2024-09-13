@@ -31,4 +31,38 @@ public:
 };
 
 //---------- Approach 2 ----------//
-//Pending | Using bitmask 
+/*
+-> Using bitmask 
+-> (c - 'a') converts the character to a number (0 for 'a', 1 for 'b', etc.)
+-> (1 << (c - 'a')) shifts 1 to the left by this number of positions. This creates a number with only one bit set, corresponding to the current letter.
+-> We use the bitwise OR operation (|=) to set this bit in our mask.
+*/
+
+class Solution {
+public:
+    int similarPairs(vector<string>& words) {
+        //initialising a vector to store the bitmask of each word
+        vector<int> bitmask;
+
+        //calculating the bitmask and storing in the bitmask vector
+        for(int i=0;i<words.size();i++){
+            int mask = 0;
+            for(int j=0;j<words[i].size();j++){
+                char c = words[i][j];
+                mask |= (1<<c-'a');
+            }
+            bitmask.push_back(mask);
+        }
+
+        int count = 0;
+        //compairing bitmasks of each word and updating count
+        for(int i=0;i<bitmask.size();i++){
+            for(int j=i+1; j<bitmask.size();j++){
+                if(bitmask[i]==bitmask[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+};
