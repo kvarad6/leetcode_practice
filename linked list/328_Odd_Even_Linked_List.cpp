@@ -78,7 +78,7 @@ public:
         ListNode* even = head->next;
         ListNode* evenHead = head->next;
 
-        while(even!=NULL && even->next!=NULL){
+        while(even!=NULL && even->next!=NULL){ 
             //establish the connections
             odd->next = odd->next->next;
             even->next = even->next->next;
