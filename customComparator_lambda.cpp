@@ -4,7 +4,7 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-auto customComparator = [](int a, int b){
+auto customComparator = [](int &a, int &b){
     if(a>b){
         return true;
     }else{
