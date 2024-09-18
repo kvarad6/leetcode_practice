@@ -1,4 +1,4 @@
-// Custom comparator
+// Custom comparator using function pointer
 #include <iostream>
 #include<vector>
 #include <bits/stdc++.h> 
