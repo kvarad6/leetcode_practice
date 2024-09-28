@@ -100,3 +100,101 @@ public:
  * bool param_7 = obj->isEmpty();
  * bool param_8 = obj->isFull();
  */
+
+
+//----------- Approach 2 -----------//
+/*
+-> Using array
+Consider two pointers front and rear 
+-> As datastructure needs to be circular, while incrementing rear or decrementing front, we need to use '%'
+Inserting at front -> 
+    dq[front] = value
+    front = (front-1+k)%k
+
+Inserting at rear ->
+    dq[rear] = value
+    rear = (rear+1)%k
+
+So, in case of circular:
+increment -> (+1)%k
+decrement -> (-1+k)%k
+
+*/
+class MyCircularDeque {
+private:
+    int K;
+    int front;
+    int rear;
+    int currentCount;
+    vector<int> dq;
+    
+public:
+    MyCircularDeque(int k) {
+        K = k;
+        front = 0;
+        rear = K-1;
+        currentCount = 0;
+        dq = vector<int>(K, 0);
+    }
+    
+    bool insertFront(int value) {
+       if(isFull()){
+        return false;
+       }
+       
+       front = (front-1+K)%K;
+       dq[front] = value;
+       currentCount++;
+       return true;
+    }
+    
+    bool insertLast(int value) {
+        if(isFull()){
+            return false;
+        }
+        rear = (rear+1)%K;
+        dq[rear] = value;
+        currentCount++;
+        return true;
+    }
+    
+    bool deleteFront() {
+        if(isEmpty()){
+            return false;
+        }
+        front = (front+1)%K;
+        currentCount--;
+        return true;
+    }
+    
+    bool deleteLast() {
+       if(isEmpty()){
+        return false;
+       }
+       rear = (rear-1+K)%K;
+       currentCount--;
+       return true;
+    }
+    
+    int getFront() {
+       if(isEmpty()){
+        return -1;
+       }
+       return dq[front];
+    }
+    
+    int getRear() {
+       if(isEmpty()){
+        return -1;
+       }
+       return dq[rear];
+    }
+    
+    bool isEmpty() {
+       return currentCount == 0;
+    }
+    
+    bool isFull() {
+        return currentCount == K;
+    }
+};
