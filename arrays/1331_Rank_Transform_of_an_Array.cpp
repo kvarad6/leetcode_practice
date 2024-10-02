@@ -16,6 +16,9 @@ public:
             temp[i] = arr[i];
         }
 
+        //Another way to assign array | direct assignment:
+        // vector<int> temp = arr;
+
         //sort the temp array
         sort(temp.begin(), temp.end());
 
