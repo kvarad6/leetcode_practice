@@ -33,7 +33,37 @@ public:
             //(long)(long) -> prevents integer overload
              chemistry += (long long)skill[i]*skill[j];
         }
+        return chemistry;
+    }
+};
 
+
+//--------- Approach 2 ----------//
+// Two pointers i, j
+// TC, SC: same as above
+class Solution {
+public:
+    long long dividePlayers(vector<int>& skill) {
+        int n = skill.size();
+
+        //sorting the original array
+        sort(skill.begin(), skill.end());
+
+        //two pointers 
+        long long chemistry = 0;
+        int skillSum = skill[0]+skill[n-1];
+
+        int i = 0;
+        int j = n-1;
+        while(i<j){
+            int currentSkill = skill[i]+skill[j];
+            if(currentSkill!=skillSum){
+                return -1;
+            }
+            chemistry += (long long)skill[i]*skill[j];
+            i++;
+            j--;
+        }
         return chemistry;
     }
 };
