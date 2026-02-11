@@ -36,3 +36,37 @@ class Solution {
         
     }
 };
+
+
+// Approach 2 (using 2 pointers): 
+//TC: O(N)
+//SC: O(N)
+
+class Solution {
+  public:
+    void reArrange(int arr[], int N) {
+       //create a new array
+       int result[N];
+       
+       int evenPosition = 0;
+       int oddPosition = 1;
+       
+       // Transverse the arr and fill out the result array
+       for(int i=0;i<N;i++){
+           if(arr[i]%2==0){
+               //place it at even index
+               result[evenPosition] = arr[i];
+               evenPosition += 2;
+           }else{
+               result[oddPosition] = arr[i];
+               oddPosition += 2;
+           }
+       }
+       
+       //copy result back to the original array
+       for(int i=0;i<N;i++){
+           arr[i] = result[i];
+       }
+        
+    }
+};
